@@ -1,9 +1,15 @@
 import React from 'react';
 import { Box } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { toggleActive } from '../features/counter/squaresSlice';
 
 const Square = ({pos, isActive}) => {
+
+  const dispatch = useDispatch()
+
   return (
     <Box
+      onMouseEnter={() => dispatch(toggleActive(pos))}
       sx={{
         width: 100,
         height: 100,

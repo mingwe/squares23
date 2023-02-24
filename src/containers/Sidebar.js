@@ -1,16 +1,13 @@
-import React from 'react';
-import { Alert, Stack } from '@mui/material';
+import React from 'react'
+import AlertsList from './AlertsList'
 
 const Sidebar = () => {
   return (
     <div>
       <h2>Hover squares</h2>
-      <Stack>
-        <Alert severity="warning">asd</Alert>
-      </Stack>
-      sidebar container
+      <AlertsList/>
     </div>
   );
 };
 
-export default Sidebar;
+export default Sidebar
