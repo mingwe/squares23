@@ -1,9 +1,9 @@
-import React from 'react';
-import { Box } from '@mui/material';
-import { useDispatch } from 'react-redux';
-import { toggleActive } from '../redux/squaresSlice';
+import React from 'react'
+import { Box } from '@mui/material'
+import { useDispatch } from 'react-redux'
+import { toggleActive } from '../redux/squaresSlice'
 
-const Square = ({pos, isActive}) => {
+const Square = ({pos, isActive, size = 40, ...other}) => {
 
   const dispatch = useDispatch()
 
@@ -11,20 +11,14 @@ const Square = ({pos, isActive}) => {
     <Box
       onMouseEnter={() => dispatch(toggleActive(pos))}
       sx={{
-        width: 40,
-        height: 40,
-        // backgroundColor: isActive ? 'primary.dark' : 'primary.main'
-        backgroundColor: isActive ? '#378fbf' : '#ccc'
-        // backgroundColor: 'primary.dark',
-        // '&:hover': {
-        //   backgroundColor: 'primary.main',
-        //   opacity: [0.9, 0.8, 0.7],
-        // },
+        width: size,
+        height: size,
+        backgroundColor: isActive ? '#378fbf' : '#ddd',
+        outline: '1px solid #000'
       }}
-    >
-      {pos?.x} {pos?.y}
-    </Box>
+      {...other}
+    />
   );
 };
 
-export default Square;
+export default Square

@@ -17,7 +17,7 @@ const AlertsList = () => {
         ))
       )}
     </Stack>
-  );
-};
+  )
+}
 
-export default AlertsList;
+export default AlertsList

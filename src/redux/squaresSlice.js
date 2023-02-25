@@ -6,25 +6,25 @@ const initialState = {
   status: 'idle',
   presets: [],
   rows: [],
-  selectedPreset: null
-};
+  // selectedPreset: null, // can be used if you need to store selected value
+  error: null
+}
 
 export const getPresets = createAsyncThunk(
   'squares/fetchPresets',
   async () => {
-    const response = await fetchPresets();
-    return response.data;
+    const response = await fetchPresets()
+    return response.data
   }
-);
+)
 
 export const squaresSlice = createSlice({
   name: 'squares',
   initialState,
   reducers: {
-    setSelectedPreset: (state, action) => {
-      console.log(action)
-      state.selectedPreset = action.payload
-    },
+    // setSelectedPreset: (state, action) => {
+    //   state.selectedPreset = action.payload
+    // },
     makeSquaresSchema: (state, action) => {
       state.rows = buildSquaresSchema(action.payload)
     },
@@ -37,12 +37,16 @@ export const squaresSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getPresets.pending, (state) => {
-        state.status = 'loading';
+        state.status = 'loading'
       })
       .addCase(getPresets.fulfilled, (state, action) => {
-        state.status = 'idle';
-        state.presets = action.payload;
-      });
+        state.status = 'idle'
+        state.presets = action.payload
+      })
+      .addCase(getPresets.rejected, (state, action) => {
+        state.status = 'error'
+        state.error = 'an error occured'
+      })
   },
 });
 
