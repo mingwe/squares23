@@ -1,22 +1,27 @@
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
 import './App.css';
+import Sidebar from './containers/Sidebar';
+import { Container, Grid } from '@mui/material';
+import Main from './containers/Main';
 
 function App() {
+
+
   return (
     <div className="App">
+
+      <Container>
+        <Grid container spacing={2}>
+          <Grid item xs={9}>
+            <Main/>
+          </Grid>
+          <Grid item xs={3}>
+            <Sidebar/>
+          </Grid>
+        </Grid>
+      </Container>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {/*<Counter />*/}
       </header>
     </div>
   );

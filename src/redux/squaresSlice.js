@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { buildSquaresSchema } from '../../helpers'
+import { buildSquaresSchema } from '../helpers'
 import { fetchPresets } from './squaresAPI'
 
 const initialState = {
@@ -13,7 +13,6 @@ export const getPresets = createAsyncThunk(
   'squares/fetchPresets',
   async () => {
     const response = await fetchPresets();
-    console.log('response fetcccch', response.data)
     return response.data;
   }
 );
@@ -22,6 +21,10 @@ export const squaresSlice = createSlice({
   name: 'squares',
   initialState,
   reducers: {
+    setSelectedPreset: (state, action) => {
+      console.log(action)
+      state.selectedPreset = action.payload
+    },
     makeSquaresSchema: (state, action) => {
       state.rows = buildSquaresSchema(action.payload)
     },
@@ -43,5 +46,5 @@ export const squaresSlice = createSlice({
   },
 });
 
-export const { toggleActive, makeSquaresSchema } = squaresSlice.actions
+export const { toggleActive, makeSquaresSchema, setSelectedPreset } = squaresSlice.actions
 export default squaresSlice.reducer
