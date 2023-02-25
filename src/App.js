@@ -1,5 +1,4 @@
 import React from 'react'
-import './App.css'
 import Sidebar from './components/Sidebar'
 import { Container, Grid } from '@mui/material'
 import Main from './components/Main'
@@ -16,4 +15,4 @@ const App = () => (
     </Grid>
   </Container>
 )
-export default App;
+export default App
